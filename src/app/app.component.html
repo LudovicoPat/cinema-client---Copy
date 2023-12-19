@@ -1,21 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Il mio Cinema</title>
-  
+
 </head>
+
 <body>
   <div>
     <button (click)="toggleFilmList()">Mostra/Nascondi Elenco Film</button>
-    
+
   </div>
   <div>
-    <!-- <button (click)="toggleAddFilmForm()">aggiungi nuovo film</button> -->
-    <a routerLink="/agg-film" routerLinkActive="active" ariaCurrentWhenActive="page">aggiungi film</a>
+    <button (click)="toggleAddFilmForm()">Aggiungi nuovo film</button>
+    <!-- <a routerLink="/agg-film" routerLinkActive="active" ariaCurrentWhenActive="page">aggiungi film</a> -->
   </div>
-  
+
   <div *ngIf="showFilmList">
     <div *ngFor="let film of films">
       <div>
@@ -30,7 +32,7 @@
     </div>
   </div>
 
-  
+
 
   <div *ngIf="showSelectedFilm && selectedFilm">
     <div>
@@ -46,4 +48,5 @@
 
   <router-outlet></router-outlet>
 </body>
+
 </html>

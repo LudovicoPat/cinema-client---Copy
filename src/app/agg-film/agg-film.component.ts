@@ -10,7 +10,7 @@ export class AggFilmComponent implements OnInit {
   films: Film[] = [];
   newFilm: Film = { id: 0, titolo: '', genere: '', durataMinuti: 0 };
 
-  constructor(private filmsService: FilmsService) {}
+  constructor(private filmsService: FilmsService) { }
 
   ngOnInit(): void {
     this.loadFilms();

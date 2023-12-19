@@ -28,14 +28,11 @@ export class FilmsService {
   deleteFilm(id: number): Observable<void> {
     return this.http.delete<void>(`https://localhost:7160/api/Gestore/${id}`);
   }
-
- 
 }
 
-export class Film
-{    
-    public id: number;
-    public genere: string;
-    public durataMinuti: number;
-    public titolo: string;
+export class Film {
+  public id: number;
+  public genere: string;
+  public durataMinuti: number;
+  public titolo: string;
 }
