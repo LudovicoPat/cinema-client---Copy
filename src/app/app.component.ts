@@ -1,10 +1,10 @@
-
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
 import { Film, FilmsService } from './services/cinema.service';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -21,16 +21,14 @@ export class AppComponent implements OnInit {
   showAddFilmForm: boolean = false;
   showSelectedFilm: boolean = false;
   
-  constructor(private filmsService: FilmsService) {}
+  constructor(private filmsService: FilmsService, private router: Router) {}
 
   toggleFilmList() {
     this.showFilmList = !this.showFilmList;
   }
 
   toggleAddFilmForm() {
-    this.showAddFilmForm = !this.showAddFilmForm;
-    this.showFilmList = false;
-    this.showSelectedFilm = false;
+    this.router.navigateByUrl('/agg-film');
   }
 
   ngOnInit(): void {
@@ -42,7 +40,6 @@ export class AppComponent implements OnInit {
       this.films = films;
     });
   }
-
   addFilm(): void {
     if (this.newFilm.titolo && this.newFilm.genere && this.newFilm.durataMinuti > 0) {
       this.filmsService.addFilm(this.newFilm).subscribe((addedFilm) => {
@@ -79,10 +76,6 @@ export class AppComponent implements OnInit {
     this.showFilmList = true;
     this.showSelectedFilm = false;
   }
-  
-  
-  
-
   deleteFilm(id: number): void {
     this.filmsService.deleteFilm(id).subscribe(() => {
       this.films = this.films.filter((film) => film.id !== id);
