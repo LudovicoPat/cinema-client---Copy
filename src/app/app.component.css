@@ -1,0 +1,64 @@
+body {
+    padding-left: 5%;
+    padding-right: 5%;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+body, html {
+    font-family: Arial, sans-serif;
+    background-color: #266caa; /* Azzurro tenue */
+    margin: 0;
+    padding: 0;
+    min-height: 100%; /* Aggiunto per far coprire il colore di sfondo l'intera pagina */
+  }
+  
+  
+  button {
+    background-color: #6a28e6; /* Colore tenue */
+    padding: 10px 20px;
+    margin: 10px;
+    color: #fff; /* Testo bianco */
+    border: none;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #4682b4; /* Cambia il colore al passaggio del mouse */
+  }
+  
+  /* Stile per la visualizzazione dei film come schede */
+  #formaggiunta,
+  #formaggiunta input,
+  #formaggiunta button,
+  #formaggiunta label,
+  #formaggiunta p {
+    text-align: center;
+    margin: 10px;
+  }
+  
+  div * {
+    box-sizing: border-box;
+  }
+  
+  div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  div > div {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 15px;
+    margin: 10px;
+    width: 300px;
+    text-align: center; /* Centra il testo all'interno della scheda */
+  }
+
+  #h2 {
+    margin-bottom: 5px; /* Aggiungi spazio tra il titolo e il genere */
+  }
+  
+  #p {
+    margin-top: 5px; /* Aggiungi spazio sopra il genere */
+  }
