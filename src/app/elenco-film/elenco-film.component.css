@@ -1,22 +1,22 @@
 body {
+    padding-left: 5%;
+    padding-right: 5%;
+    font-family: 'Times New Roman', Times, serif;
+}
+
+body, html {
     font-family: Arial, sans-serif;
     background-color: #266caa; /* Azzurro tenue */
     margin: 0;
     padding: 0;
-    min-height: 100vh; /* Aggiunto per far coprire il colore di sfondo l'intera pagina */
+    min-height: 100%; /* Aggiunto per far coprire il colore di sfondo l'intera pagina */
   }
   
-  header{
-    background-color: #333;
-    color: #fff;
-    text-align: center;
-    padding: 10px 0;
-  }
   
   button {
     background-color: #6a28e6; /* Colore tenue */
-    padding: 20px 40px;
-    margin: 20px;
+    padding: 10px 20px;
+    margin: 10px;
     color: #fff; /* Testo bianco */
     border: none;
     cursor: pointer;
@@ -48,6 +48,7 @@ body {
   
   div > div {
     border: 1px solid #ccc;
+    background-color: gainsboro;
     border-radius: 5px;
     padding: 15px;
     margin: 10px;

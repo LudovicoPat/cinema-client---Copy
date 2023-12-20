@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Il mio Cinema</title>
+
+</head>
+
+<body>
+  
+  <div>
+    <div *ngFor="let film of films">
+      <div>
+        <h2>{{ film.titolo }}</h2>
+      </div>
+      <div>
+        <h4>{{ film.genere }}</h4>
+      </div>
+      <div>
+        <h4>Durata: {{ film.durataMinuti }} minuti</h4>
+      </div>
+      <!-- <button (click)="updateFilm(film)">Modifica Film</button> -->
+      <button (click)="updateFilm(film)">Modifica Film</button>
+      <button (click)="deleteFilm(film.id)">Elimina Film</button>
+    </div>
+  </div>
+
+  <router-outlet></router-outlet>
+</body>
+
+</html>

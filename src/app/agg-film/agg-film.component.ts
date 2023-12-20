@@ -22,6 +22,12 @@ export class AggFilmComponent implements OnInit {
     });
   }
 
+  loadFilmDetails(id: number): void {
+    this.filmsService.getFilm(id).subscribe((film) => {
+      this.newFilm = film;
+    });
+  }
+
   addFilm(): void {
     if (this.newFilm.titolo && this.newFilm.genere && this.newFilm.durataMinuti > 0) {
       this.filmsService.addFilm(this.newFilm).subscribe((addedFilm) => {

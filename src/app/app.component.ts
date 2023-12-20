@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
   constructor(private filmsService: FilmsService, private router: Router) {}
 
   toggleFilmList() {
-    this.showFilmList = !this.showFilmList;
+    this.router.navigateByUrl('/elenco-film');
   }
 
   toggleAddFilmForm() {
@@ -40,6 +40,7 @@ export class AppComponent implements OnInit {
       this.films = films;
     });
   }
+<<<<<<< Updated upstream
   addFilm(): void {
     if (this.newFilm.titolo && this.newFilm.genere && this.newFilm.durataMinuti > 0) {
       this.filmsService.addFilm(this.newFilm).subscribe((addedFilm) => {
@@ -54,6 +55,22 @@ export class AppComponent implements OnInit {
     }
   }
   
+=======
+
+  // addFilm(): void {
+  //   if (this.newFilm.titolo && this.newFilm.genere && this.newFilm.durataMinuti > 0) {
+  //     this.filmsService.addFilm(this.newFilm).subscribe((addedFilm) => {
+  //       this.films.push(addedFilm);
+  //       this.resetNewFilm();
+  //       this.showAddFilmForm = false;
+  //       this.showFilmList = true;
+  //     });
+  //   } else {
+  //     alert('Compila tutti i campi prima di aggiungere un film.');
+  //   }
+  // }
+
+>>>>>>> Stashed changes
   updateFilm(film: Film): void {
     this.selectedFilm = film;
     this.showSelectedFilm = true;

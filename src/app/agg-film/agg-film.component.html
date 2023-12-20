@@ -1,4 +1,5 @@
 <div>
+<<<<<<< Updated upstream
     <label for="titolo">Titolo:</label>
     <input [(ngModel)]="newFilm.titolo" id="titolo" name="titolo" type="text" required>
   </div>
@@ -11,3 +12,32 @@
   <input [(ngModel)]="newFilm.durataMinuti" id="durata" name="durata" type="number" required>
   </div>
   <button (click)="addFilm()">Aggiungi Film</button>
+=======
+  <div>
+    <div>
+      <label for="titolo">Titolo:</label>
+    </div>
+    <div>
+      <input [(ngModel)]="newFilm.titolo" id="titolo" name="titolo" type="text" required>
+    </div>
+  </div>
+  <div>
+    <div>
+      <label for="genere">Genere:</label>
+    </div>
+    <div>
+      <input [(ngModel)]="newFilm.genere" id="genere" name="genere" type="text" required>
+    </div>
+  </div>
+  <div>
+    <div>
+      <label for="durata">Durata (minuti):</label>
+    </div>
+    <div>
+      <input [(ngModel)]="newFilm.durataMinuti" id="durata" name="durata" type="number" required>
+    </div>
+  </div>
+  <button (click)="addFilm()">Aggiungi Film</button>
+
+</div>
+>>>>>>> Stashed changes

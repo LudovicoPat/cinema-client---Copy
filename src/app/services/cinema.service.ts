@@ -17,6 +17,10 @@ export class FilmsService {
     return this.http.get<Film[]>("https://localhost:7160/api/Gestore");
   }
 
+  getFilm(id: number): Observable<Film> {
+    return this.http.get<Film>(`https://localhost:7160/api/Gestore/${id}`);
+  }
+
   addFilm(film: Film): Observable<Film> {
     return this.http.post<Film>("https://localhost:7160/api/Gestore", film);
   }

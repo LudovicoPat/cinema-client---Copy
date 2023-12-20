@@ -7,14 +7,23 @@
   
 </head>
 <body>
+  <header>
+    <h1>Il mio Cinema</h1>
+  </header>
   <div>
+<<<<<<< Updated upstream
     <button (click)="toggleFilmList()">Mostra/Nascondi Elenco Film</button>
     
+=======
+    <button (click)="toggleFilmList()">Elenco Film</button>
+
+>>>>>>> Stashed changes
   </div>
   <div>
     <!-- <button (click)="toggleAddFilmForm()">aggiungi nuovo film</button> -->
     <a routerLink="/agg-film" routerLinkActive="active" ariaCurrentWhenActive="page">aggiungi film</a>
   </div>
+<<<<<<< Updated upstream
   
   <div *ngIf="showFilmList">
     <div *ngFor="let film of films">
@@ -31,6 +40,10 @@
   </div>
 
   
+=======
+
+
+>>>>>>> Stashed changes
 
   <div *ngIf="showSelectedFilm && selectedFilm">
     <div>
