@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Il mio Cinema</title>
+
+</head>
+
+<body>
+  
+  <div>
+    <div *ngFor="let sala of sale">
+      <div>
+        <h2>{{ sala.nome }}</h2>
+      </div>
+      <div>
+        <h4>Posti Totali: {{ sala.postiTotali }}</h4>
+      </div>
+      <button (click)="deleteSala(sala.id)">Elimina Sala</button>
+    </div>
+  </div>
+
+  <router-outlet></router-outlet>
+</body>
+
+</html>

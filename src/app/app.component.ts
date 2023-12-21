@@ -31,6 +31,14 @@ export class AppComponent implements OnInit {
     this.router.navigateByUrl('/agg-film');
   }
 
+  toggleSaleList() {
+    this.router.navigateByUrl('/elenco-sale');
+  }
+
+  toggleProiezioniList(){
+    this.router.navigateByUrl('/elenco-proiezioni');
+  }
+
   ngOnInit(): void {
     this.loadFilms();
   }
@@ -40,19 +48,6 @@ export class AppComponent implements OnInit {
       this.films = films;
     });
   }
-
-  // addFilm(): void {
-  //   if (this.newFilm.titolo && this.newFilm.genere && this.newFilm.durataMinuti > 0) {
-  //     this.filmsService.addFilm(this.newFilm).subscribe((addedFilm) => {
-  //       this.films.push(addedFilm);
-  //       this.resetNewFilm();
-  //       this.showAddFilmForm = false;
-  //       this.showFilmList = true;
-  //     });
-  //   } else {
-  //     alert('Compila tutti i campi prima di aggiungere un film.');
-  //   }
-  // }
 
   updateFilm(film: Film): void {
     this.selectedFilm = film;

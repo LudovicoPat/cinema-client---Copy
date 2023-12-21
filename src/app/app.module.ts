@@ -5,12 +5,16 @@ import { AggFilmComponent } from './agg-film/agg-film.component';
 import { FormsModule } from '@angular/forms';
 import { ElencoFilmComponent } from './elenco-film/elenco-film.component';
 import { CommonModule } from '@angular/common';
+import { ElencoSaleComponent } from './elenco-sale/elenco-sale.component';
+import { ElencoProiezioniComponent } from './proiezione/elenco-proiezioni.component';
 
 
 export const routes: Routes = [
   { path: 'elenco-film', component: ElencoFilmComponent },
   { path: 'agg-film', component: AggFilmComponent },
   { path: 'modifica-film/:id', component: AggFilmComponent },
+  { path: 'elenco-sale', component: ElencoSaleComponent },
+  { path: 'elenco-proiezioni', component: ElencoProiezioniComponent }
 ];
 
 @NgModule({
@@ -18,7 +22,9 @@ export const routes: Routes = [
   exports: [RouterModule],
   declarations: [
     ElencoFilmComponent,
-    AggFilmComponent
+    AggFilmComponent,
+    ElencoSaleComponent,
+    ElencoProiezioniComponent
   ]
 })
 export class AppRoutingModule {}

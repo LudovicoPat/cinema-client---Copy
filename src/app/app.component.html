@@ -10,28 +10,19 @@
   <header>
     <h1>Il mio Cinema</h1>
   </header>
-  <div>
+  
     <button (click)="toggleFilmList()">Elenco Film</button>
+  
+    <button (click)="toggleAddFilmForm()">Aggiungi nuovo film</button>
+ 
+    <button (click)="toggleSaleList()">Elenco Sale</button>
+ 
+    <button (click)="toggleProiezioniList()">Elenco Proiezioni</button>
 
-  </div>
-  <div>
-    <button (click)="toggleAddFilmForm()">aggiungi nuovo film</button>
-    <!-- <a routerLink="/agg-film" routerLinkActive="active" ariaCurrentWhenActive="page">aggiungi film</a> -->
-  </div>
 
 
 
-  <div *ngIf="showSelectedFilm && selectedFilm">
-    <div>
-      <label for="updatedTitolo">Nuovo Titolo:</label>
-      <input [(ngModel)]="selectedFilm.titolo" id="updatedTitolo" name="updatedTitolo" type="text" required>
-    </div>
-    <div>
-      <label for="updatedGenere">Nuovo Genere:</label>
-      <input [(ngModel)]="selectedFilm.genere" id="updatedGenere" name="updatedGenere" type="text" required>
-    </div>
-    <button (click)="saveUpdatedFilm()">Salva Modifiche</button>
-  </div>
+  
 
   <router-outlet></router-outlet>
 </body>

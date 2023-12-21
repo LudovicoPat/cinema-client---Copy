@@ -7,12 +7,6 @@ import { Observable } from 'rxjs';
 export class FilmsService {
   constructor(private http: HttpClient) { }
 
-  // getFilmList(){
-  //   this.http.get<Film[]>("https://localhost:7160/api/Gestore")
-  //   .subscribe((films) => {
-  //       console.log(films.map(f => f.titolo));
-  //   })
-  // }
   getFilmList(): Observable<Film[]> {
     return this.http.get<Film[]>("https://localhost:7160/api/Gestore");
   }
@@ -33,6 +27,25 @@ export class FilmsService {
     return this.http.delete<void>(`https://localhost:7160/api/Gestore/${id}`);
   }
 
+  getSaleList(): Observable<Sala[]> {
+    return this.http.get<Sala[]>("https://localhost:7160/api/Gestore/Sala");
+  }
+
+  deleteSala(id: number): Observable<void> {
+    return this.http.delete<void>(`https://localhost:7160/api/Gestore/Sala/${id}`);
+  }
+
+  getProiezioniList(): Observable<Proiezione[]> {
+    return this.http.get<Proiezione[]>("https://localhost:7160/api/Gestore/Proiezione");
+  }
+
+  addProiezione(proiezione: Proiezione): Observable<Proiezione> {
+    return this.http.post<Proiezione>("https://localhost:7160/api/Gestore/Proiezione", proiezione);
+  }
+
+  deleteProiezione(id: number): Observable<void> {
+    return this.http.delete<void>(`https://localhost:7160/api/Gestore/Proiezione/${id}`);
+  }
  
 }
 
@@ -42,4 +55,21 @@ export class Film
     public genere: string;
     public durataMinuti: number;
     public titolo: string;
+}
+
+export class Sala
+{
+  public id: number;
+  public nome: string;
+  public postiTotali: number;
+}
+
+export class Proiezione {
+  public id: number;
+  public filmId: number;
+  public film: Film;
+  public salaId: number;
+  public sala: Sala;
+  public orario: Date;
+  public postiDisponibili: number;
 }
