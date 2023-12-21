@@ -1,3 +1,10 @@
+<div *ngIf="!isNewFilm()">
+  <h2>Modifica Film</h2>
+</div>
+<div *ngIf="isNewFilm()">
+  <h2>Aggiungi Film</h2>
+</div>
+
 <div>
   <div>
     <div>
@@ -23,6 +30,6 @@
       <input [(ngModel)]="newFilm.durataMinuti" id="durata" name="durata" type="number" required>
     </div>
   </div>
-  <button (click)="addFilm()">Aggiungi Film</button>
-
+  <!-- <button (click)="addFilm()">Salva e torna a elenco</button> -->
+  <button (click)="saveFilm()">{{ isNewFilm() ? 'Aggiungi' : 'Modifica' }} Film</button>
 </div>

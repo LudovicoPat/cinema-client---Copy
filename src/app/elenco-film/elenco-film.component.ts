@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Film, FilmsService } from '../services/cinema.service';
 import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-elenco-film',
@@ -13,18 +14,27 @@ export class ElencoFilmComponent implements OnInit {
    films: Film[] = [];
    selectedFilm: Film | null = null;
    showFilmList: boolean = false;
- 
+   
+   filmInModifica: Film | null = null;
+
    title = 'cinema-client';
  
    //#endregion
  
    //#region COSTRUTTORE E ngOnInit SE PRESENTE
  
-   constructor(private filmsService: FilmsService, private router: Router) { }
+   constructor(private filmsService: FilmsService, private router: Router, private route: ActivatedRoute) { }
  
    ngOnInit(): void {
-     this.loadFilms();
-   }
+    this.loadFilms();
+    this.route.params.subscribe((params: { [key: string]: string }) => {
+      const filmId = +params['id'];
+      if (filmId) {
+        this.loadFilmDetails(filmId);
+      }
+    });
+  }
+  
  
    //#endregion
  
@@ -34,7 +44,13 @@ export class ElencoFilmComponent implements OnInit {
      this.router.navigateByUrl('/agg-film');
    }
  
-   
+   loadFilmDetails(id: number): void {
+    this.filmsService.getFilm(id).subscribe((film) => {
+      // Assegna i dati del film da modificare alla nuova variabile
+      this.filmInModifica = film;
+    });
+  }
+
 loadFilms(): void {
   this.filmsService.getFilmList().subscribe(
     (films) => {
