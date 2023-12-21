@@ -11,39 +11,15 @@
     <h1>Il mio Cinema</h1>
   </header>
   <div>
-<<<<<<< Updated upstream
-    <button (click)="toggleFilmList()">Mostra/Nascondi Elenco Film</button>
-    
-=======
     <button (click)="toggleFilmList()">Elenco Film</button>
 
->>>>>>> Stashed changes
   </div>
   <div>
-    <!-- <button (click)="toggleAddFilmForm()">aggiungi nuovo film</button> -->
-    <a routerLink="/agg-film" routerLinkActive="active" ariaCurrentWhenActive="page">aggiungi film</a>
-  </div>
-<<<<<<< Updated upstream
-  
-  <div *ngIf="showFilmList">
-    <div *ngFor="let film of films">
-      <div>
-        <h2>{{ film.titolo }}</h2>
-      </div>
-      <div>
-        <h3>{{ film.genere }}</h3>
-      </div>
-      <button (click)="updateFilm(film)">Modifica Film</button>
-      <!-- <button (click)="updateFilm(film)">Modifica Film</button> -->
-      <button (click)="deleteFilm(film.id)">Elimina Film</button>
-    </div>
+    <button (click)="toggleAddFilmForm()">aggiungi nuovo film</button>
+    <!-- <a routerLink="/agg-film" routerLinkActive="active" ariaCurrentWhenActive="page">aggiungi film</a> -->
   </div>
 
-  
-=======
 
-
->>>>>>> Stashed changes
 
   <div *ngIf="showSelectedFilm && selectedFilm">
     <div>

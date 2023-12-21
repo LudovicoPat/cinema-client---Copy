@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Film, FilmsService } from '../services/cinema.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-agg-film',
@@ -10,7 +11,7 @@ export class AggFilmComponent implements OnInit {
   films: Film[] = [];
   newFilm: Film = { id: 0, titolo: '', genere: '', durataMinuti: 0 };
 
-  constructor(private filmsService: FilmsService) {}
+  constructor(private filmsService: FilmsService, private router: Router) {}
 
   ngOnInit(): void {
     this.loadFilms();
@@ -33,6 +34,7 @@ export class AggFilmComponent implements OnInit {
       this.filmsService.addFilm(this.newFilm).subscribe((addedFilm) => {
         this.films.push(addedFilm);
         this.resetNewFilm();
+        this.router.navigateByUrl('/elenco-film');
       });
     } else {
       alert('Compila tutti i campi prima di aggiungere un film.');
