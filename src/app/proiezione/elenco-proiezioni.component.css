@@ -1,17 +1,21 @@
-body {
+/* Aggiungi uno spazio tra i menù a tendina */
+select {
+    margin-bottom: 10px;
+  }
+  
+  body {
     padding-left: 5%;
     padding-right: 5%;
     font-family: 'Times New Roman', Times, serif;
-}
-
-body, html {
+  }
+  
+  body, html {
     font-family: Arial, sans-serif;
     background-color: #266caa; /* Azzurro tenue */
     margin: 0;
     padding: 0;
     min-height: 100%; /* Aggiunto per far coprire il colore di sfondo l'intera pagina */
   }
-  
   
   button {
     background-color: #6a28e6; /* Colore tenue */
@@ -55,7 +59,7 @@ body, html {
     width: 300px;
     text-align: center; /* Centra il testo all'interno della scheda */
   }
-
+  
   #h2 {
     margin-bottom: 5px; /* Aggiungi spazio tra il titolo e il genere */
   }
@@ -63,3 +67,4 @@ body, html {
   #p {
     margin-top: 5px; /* Aggiungi spazio sopra il genere */
   }
+  

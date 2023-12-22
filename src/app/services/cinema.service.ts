@@ -39,13 +39,22 @@ export class FilmsService {
     return this.http.get<Proiezione[]>("https://localhost:7160/api/Gestore/Proiezione");
   }
 
+  getProiezione(id: number): Observable<Proiezione> {
+    return this.http.get<Proiezione>(`https://localhost:7160/api/Gestore/Proiezione/${id}`);
+  }
+
   addProiezione(proiezione: Proiezione): Observable<Proiezione> {
     return this.http.post<Proiezione>("https://localhost:7160/api/Gestore/Proiezione", proiezione);
-  }
+  }  
 
   deleteProiezione(id: number): Observable<void> {
     return this.http.delete<void>(`https://localhost:7160/api/Gestore/Proiezione/${id}`);
   }
+
+  updateProiezione(proiezione: Proiezione): Observable<Proiezione> {
+    return this.http.put<Proiezione>(`https://localhost:7160/api/Gestore/Proiezione/${proiezione.id}`, proiezione);
+  }
+  
  
 }
 
@@ -66,9 +75,9 @@ export class Sala
 
 export class Proiezione {
   public id: number;
-  public filmId: number;
+ 
   public film: Film;
-  public salaId: number;
+  
   public sala: Sala;
   public orario: Date;
   public postiDisponibili: number;

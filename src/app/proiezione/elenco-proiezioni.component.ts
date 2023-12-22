@@ -25,4 +25,20 @@ export class ElencoProiezioniComponent implements OnInit {
       this.proiezioni = proiezioni;
     });
   }
+
+  toggleAddProiezioneForm() {
+    this.router.navigateByUrl('/agg-proiezione');
+  }
+
+  updateProiezione(proiezione: Proiezione): void {
+    this.router.navigate(['/modifica-proiezione', proiezione.id]);
+  }
+   
+ 
+   deleteProiezione(id: number): void {
+     this.filmsService.deleteProiezione(id).subscribe(() => {
+       this.proiezioni = this.proiezioni.filter((proiezione) => proiezione.id !== id);
+     });
+   }
+
 }

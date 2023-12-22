@@ -11,6 +11,7 @@
 <body>
   
   <div>
+    <button (click)="toggleAddProiezioneForm()">Aggiungi nuova proiezione</button>
     <!-- elenco-proiezioni.component.html -->
 <div *ngFor="let proiezione of proiezioni">
     <h3>Proiezione ID: {{ proiezione.id }}</h3>
@@ -19,6 +20,9 @@
     <div>Data e ora: {{ proiezione.orario | date:'dd/MM/yyyy HH:mm' }}</div>
     <div>Posti Disponibili: {{ proiezione.postiDisponibili }}</div>
     <hr>
+
+    <button (click)="updateProiezione(proiezione)">Modifica Proiezione</button>
+    <button (click)="deleteProiezione(proiezione.id)">Elimina Proiezione</button>
   </div>
   
   </div>

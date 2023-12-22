@@ -61,27 +61,6 @@ loadFilms(): void {
     }
   );
 }
-
- 
-   // addFilm(): void {
-   //   if (this.newFilm.titolo && this.newFilm.genere && this.newFilm.durataMinuti > 0) {
-   //     this.filmsService.addFilm(this.newFilm).subscribe((addedFilm) => {
-   //       this.films.push(addedFilm);
-   //       this.resetNewFilm();
-   //       this.showAddFilmForm = false;
-   //       this.showFilmList = true;
-   //     });
-   //   } else {
-   //     alert('Compila tutti i campi prima di aggiungere un film.');
-   //   }
-   // }
- 
-//    updateFilm(film: Film): void {
-//      this.selectedFilm = film;
-//      this.showSelectedFilm = true;
-//      this.showFilmList = false;
-//      this.showAddFilmForm = false;
-//    }
  
   updateFilm(film: Film): void {
     this.router.navigate(['/modifica-film', film.id]);

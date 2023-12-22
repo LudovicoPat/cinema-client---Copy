@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Il mio Cinema</title>
+
+</head>
+
+<body>
+
+  <form (submit)="saveProiezione()">
+    <div>
+      <label for="film">Film:</label>
+      <select id="film" name="film" [ngModel]="newProiezione.film" (ngModelChange)="onChangeFilm($event)" required>
+        <option *ngFor="let f of films" [value]="f">{{ f.titolo }}</option>
+      </select>
+    </div>
+    
+    <div>
+      <label for="sala">Sala:</label>
+      <select id="sala" name="sala" [(ngModel)]="newProiezione.sala" (ngModelChange)="onChangeSala($event)" required>
+        <option *ngFor="let sala of sale" [value]="sala">{{ sala.nome }}</option>
+      </select>
+    </div>
+    
+    <div>
+      <label for="orario">Orario:</label>
+      <input type="datetime-local" id="orario" name="orario" [(ngModel)]="newProiezione.orario" required>
+    </div>
+    
+    <div>
+      <label for="postiDisponibili">Posti Disponibili:</label>
+      <input type="number" id="postiDisponibili" name="postiDisponibili" [(ngModel)]="newProiezione.postiDisponibili" required>
+    </div>
+    
+    <button type="submit">Salva Proiezione</button>
+  </form>
+
+  
+  <router-outlet></router-outlet>
+</body>
+
+</html>

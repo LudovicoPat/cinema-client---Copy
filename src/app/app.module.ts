@@ -7,6 +7,7 @@ import { ElencoFilmComponent } from './elenco-film/elenco-film.component';
 import { CommonModule } from '@angular/common';
 import { ElencoSaleComponent } from './elenco-sale/elenco-sale.component';
 import { ElencoProiezioniComponent } from './proiezione/elenco-proiezioni.component';
+import { AggProiezioneComponent } from './proiezione/agg-proiezione.component'
 
 
 export const routes: Routes = [
@@ -14,7 +15,8 @@ export const routes: Routes = [
   { path: 'agg-film', component: AggFilmComponent },
   { path: 'modifica-film/:id', component: AggFilmComponent },
   { path: 'elenco-sale', component: ElencoSaleComponent },
-  { path: 'elenco-proiezioni', component: ElencoProiezioniComponent }
+  { path: 'elenco-proiezioni', component: ElencoProiezioniComponent },
+  { path: 'agg-proiezione', component: AggProiezioneComponent },
 ];
 
 @NgModule({
@@ -24,7 +26,8 @@ export const routes: Routes = [
     ElencoFilmComponent,
     AggFilmComponent,
     ElencoSaleComponent,
-    ElencoProiezioniComponent
+    ElencoProiezioniComponent,
+    AggProiezioneComponent
   ]
 })
 export class AppRoutingModule {}
