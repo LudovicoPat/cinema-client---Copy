@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FilmsService, Proiezione, Film, Sala } from '../services/cinema.service';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
+import { switchMap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-agg-proiezione',
@@ -10,17 +11,25 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class AggProiezioneComponent implements OnInit {
 
-  onChangeFilm(selectedFilm: Film): void {
-    console.log(selectedFilm);
-    this.newProiezione.film = selectedFilm;
-    console.log(this.newProiezione);
+  onChangeFilm(selectedFilmId: number): void {
+    this.filmsService.getFilm(selectedFilmId).subscribe((film) => {
+      console.log(film);
+      this.newProiezione.filmId = film.id;
+      console.log('Film ID:', selectedFilmId);
+      console.log(this.newProiezione);
+    });
+  }
+
+  onChangeSala(selectedSalaId: number): void {
+    this.filmsService.getSala(selectedSalaId).subscribe((sala) => {
+      console.log(sala);
+      this.newProiezione.salaId = sala.id;
+      console.log('Sala ID:', selectedSalaId);
+      console.log(this.newProiezione);
+    });
   }
   
-  onChangeSala(selectedSala: Sala): void {
-    console.log(selectedSala);
-    this.newProiezione.sala = selectedSala;
-    console.log(this.newProiezione);
-  }
+
   
 
 
@@ -70,9 +79,39 @@ export class AggProiezioneComponent implements OnInit {
     }
   }
 
+  // addProiezione(): void {
+  //   if (this.newProiezione.film && this.newProiezione.sala && this.newProiezione.orario) {
+  //     this.filmsService.addProiezione(this.newProiezione).subscribe({
+  //       next: (addedProiezione) => {
+  //         this.proiezioni.push(addedProiezione);
+  //         this.resetNewProiezione();
+  //         this.router.navigateByUrl('/elenco-proiezioni');
+  //       },
+  //       error: (error) => {
+  //         alert('Errore durante l\'aggiunta della proiezione');
+  //       }
+  //     });
+  //   } else {
+  //     alert('Compila tutti i campi correttamente prima di aggiungere una proiezione.');
+  //   }
+  // }
   addProiezione(): void {
-    if (this.newProiezione.film && this.newProiezione.sala && this.newProiezione.orario) {
-      this.filmsService.addProiezione(this.newProiezione).subscribe({
+    console.log("Before adding Proiezione:", this.newProiezione);
+  
+    if (this.newProiezione.filmId && this.newProiezione.salaId && this.newProiezione.orario) {
+      console.log("Adding Proiezione...");
+      console.log("filmId:", this.newProiezione.filmId);
+      console.log("salaId:", this.newProiezione.salaId);
+      console.log("orario:", this.newProiezione.orario);
+  
+      const proiezioneToAdd: Partial<Proiezione> = {
+        filmId: this.newProiezione.filmId,
+        salaId: this.newProiezione.salaId,
+        orario: this.newProiezione.orario,
+        postiDisponibili: this.newProiezione.postiDisponibili
+      };
+  
+      this.filmsService.addProiezione(proiezioneToAdd as Proiezione).subscribe({
         next: (addedProiezione) => {
           this.proiezioni.push(addedProiezione);
           this.resetNewProiezione();
@@ -80,16 +119,25 @@ export class AggProiezioneComponent implements OnInit {
         },
         error: (error) => {
           alert('Errore durante l\'aggiunta della proiezione');
+          if (error && error.error && error.error.errors) {
+            // Mostra gli errori di validazione specifici
+            console.log('Errori di validazione:', error.error.errors);}
+          console.log('Dettaglio dell\'errore:', error);
         }
       });
     } else {
+      console.log("Compila tutti i campi correttamente prima di aggiungere una proiezione.");
       alert('Compila tutti i campi correttamente prima di aggiungere una proiezione.');
     }
   }
+  
+  
+  
+  
 
   updateProiezione(): void {
     // Controlli per i campi della proiezione da aggiornare
-    if (this.newProiezione.film && this.newProiezione.sala && this.newProiezione.orario) {
+    if (this.newProiezione.filmId && this.newProiezione.salaId && this.newProiezione.orario) {
       this.filmsService.updateProiezione(this.newProiezione).subscribe((updatedProiezione) => {
        
         this.resetNewProiezione();

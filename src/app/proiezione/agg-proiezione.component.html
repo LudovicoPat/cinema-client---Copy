@@ -11,7 +11,7 @@
 <body>
 
   <form (submit)="saveProiezione()">
-    <div>
+    <!-- <div>
       <label for="film">Film:</label>
       <select id="film" name="film" [ngModel]="newProiezione.film" (ngModelChange)="onChangeFilm($event)" required>
         <option *ngFor="let f of films" [value]="f">{{ f.titolo }}</option>
@@ -20,10 +20,24 @@
     
     <div>
       <label for="sala">Sala:</label>
-      <select id="sala" name="sala" [(ngModel)]="newProiezione.sala" (ngModelChange)="onChangeSala($event)" required>
+      <select id="sala" name="sala" [ngModel]="newProiezione.sala" (ngModelChange)="onChangeSala($event)" required>
         <option *ngFor="let sala of sale" [value]="sala">{{ sala.nome }}</option>
       </select>
+    </div> -->
+    <div>
+        <label for="film">Film:</label>
+    <select id="film" name="film" [ngModel]="newProiezione.filmId" (ngModelChange)="onChangeFilm($event)" required>
+      <option *ngFor="let f of films" [value]="f.id">{{ f.titolo }}</option>
+    </select>
     </div>
+
+    <div>
+      <label for="sala">Sala:</label>
+      <select id="sala" name="sala" [ngModel]="newProiezione.salaId" (ngModelChange)="onChangeSala($event)" required>
+        <option *ngFor="let sala of sale" [value]="sala.id">{{ sala.nome }}</option>
+      </select>
+    </div>
+
     
     <div>
       <label for="orario">Orario:</label>

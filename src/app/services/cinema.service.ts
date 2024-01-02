@@ -27,6 +27,10 @@ export class FilmsService {
     return this.http.delete<void>(`https://localhost:7160/api/Gestore/${id}`);
   }
 
+  getSala(id: number): Observable<Sala> {
+    return this.http.get<Sala>(`https://localhost:7160/api/Gestore/Sala/${id}`);
+  }
+
   getSaleList(): Observable<Sala[]> {
     return this.http.get<Sala[]>("https://localhost:7160/api/Gestore/Sala");
   }
@@ -44,8 +48,10 @@ export class FilmsService {
   }
 
   addProiezione(proiezione: Proiezione): Observable<Proiezione> {
-    return this.http.post<Proiezione>("https://localhost:7160/api/Gestore/Proiezione", proiezione);
-  }  
+    const { film, sala, ...proiezioneData } = proiezione;
+
+  return this.http.post<Proiezione>("https://localhost:7160/api/Gestore/Proiezione", proiezioneData);
+}  
 
   deleteProiezione(id: number): Observable<void> {
     return this.http.delete<void>(`https://localhost:7160/api/Gestore/Proiezione/${id}`);
@@ -73,12 +79,11 @@ export class Sala
   public postiTotali: number;
 }
 
+// Proiezione su Angular
 export class Proiezione {
   public id: number;
- 
-  public film: Film;
-  
-  public sala: Sala;
+  public filmId: number;
+  public salaId: number;
   public orario: Date;
   public postiDisponibili: number;
 }
