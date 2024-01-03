@@ -47,11 +47,9 @@ export class FilmsService {
     return this.http.get<Proiezione>(`https://localhost:7160/api/Gestore/Proiezione/${id}`);
   }
 
-  addProiezione(proiezione: Proiezione): Observable<Proiezione> {
-    const { film, sala, ...proiezioneData } = proiezione;
-
-  return this.http.post<Proiezione>("https://localhost:7160/api/Gestore/Proiezione", proiezioneData);
-}  
+  addProiezione(proiezioneData: Partial<Proiezione>): Observable<Proiezione> {
+    return this.http.post<Proiezione>("https://localhost:7160/api/Gestore/Proiezione", proiezioneData);
+  }
 
   deleteProiezione(id: number): Observable<void> {
     return this.http.delete<void>(`https://localhost:7160/api/Gestore/Proiezione/${id}`);

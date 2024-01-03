@@ -11,19 +11,7 @@
 <body>
 
   <form (submit)="saveProiezione()">
-    <!-- <div>
-      <label for="film">Film:</label>
-      <select id="film" name="film" [ngModel]="newProiezione.film" (ngModelChange)="onChangeFilm($event)" required>
-        <option *ngFor="let f of films" [value]="f">{{ f.titolo }}</option>
-      </select>
-    </div>
     
-    <div>
-      <label for="sala">Sala:</label>
-      <select id="sala" name="sala" [ngModel]="newProiezione.sala" (ngModelChange)="onChangeSala($event)" required>
-        <option *ngFor="let sala of sale" [value]="sala">{{ sala.nome }}</option>
-      </select>
-    </div> -->
     <div>
         <label for="film">Film:</label>
     <select id="film" name="film" [ngModel]="newProiezione.filmId" (ngModelChange)="onChangeFilm($event)" required>

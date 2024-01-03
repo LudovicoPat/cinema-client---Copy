@@ -34,14 +34,14 @@ export class AggProiezioneComponent implements OnInit {
 
 
   proiezioni: Proiezione[] = [];
-  newProiezione: Proiezione;
+  newProiezione: Proiezione = { id: 0, filmId: 0, salaId: 0, orario: new Date(), postiDisponibili: 0 };
   films: Film[] = [];
   sale: Sala[] = [];
 
   constructor(private filmsService: FilmsService, private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.resetNewProiezione();
+    //this.resetNewProiezione();
     
     this.filmsService.getFilmList().subscribe((films) => {
       console.log(films);
@@ -114,7 +114,7 @@ export class AggProiezioneComponent implements OnInit {
       this.filmsService.addProiezione(proiezioneToAdd as Proiezione).subscribe({
         next: (addedProiezione) => {
           this.proiezioni.push(addedProiezione);
-          this.resetNewProiezione();
+          //this.resetNewProiezione();
           this.router.navigateByUrl('/elenco-proiezioni');
         },
         error: (error) => {
@@ -140,7 +140,7 @@ export class AggProiezioneComponent implements OnInit {
     if (this.newProiezione.filmId && this.newProiezione.salaId && this.newProiezione.orario) {
       this.filmsService.updateProiezione(this.newProiezione).subscribe((updatedProiezione) => {
        
-        this.resetNewProiezione();
+        //this.resetNewProiezione();
         this.router.navigateByUrl('/elenco-proiezioni');
       });
     } else {
@@ -148,11 +148,11 @@ export class AggProiezioneComponent implements OnInit {
     }
   }
 
-  resetNewProiezione(): void {
-    //this.newProiezione = { id: 0, film: {} as Film, sala: {} as Sala, orario: new Date(), postiDisponibili: 0 };
-    this.newProiezione = new Proiezione();
-    this.newProiezione.id = 0;
-    this.newProiezione.orario = new Date();
-    this.newProiezione.postiDisponibili = 0;
-  }
+  // resetNewProiezione(): void {
+  //   //this.newProiezione = { id: 0, film: {} as Film, sala: {} as Sala, orario: new Date(), postiDisponibili: 0 };
+  //   this.newProiezione = new Proiezione();
+  //   this.newProiezione.id = 0;
+  //   this.newProiezione.orario = new Date();
+  //   this.newProiezione.postiDisponibili = 0;
+  // }
 }
