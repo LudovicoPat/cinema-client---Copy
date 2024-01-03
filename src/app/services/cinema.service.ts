@@ -7,6 +7,8 @@ import { Observable } from 'rxjs';
 export class FilmsService {
   constructor(private http: HttpClient) { }
 
+  // FILM
+
   getFilmList(): Observable<Film[]> {
     return this.http.get<Film[]>("https://localhost:7160/api/Gestore");
   }
@@ -27,6 +29,8 @@ export class FilmsService {
     return this.http.delete<void>(`https://localhost:7160/api/Gestore/${id}`);
   }
 
+  // SALE
+
   getSala(id: number): Observable<Sala> {
     return this.http.get<Sala>(`https://localhost:7160/api/Gestore/Sala/${id}`);
   }
@@ -38,6 +42,8 @@ export class FilmsService {
   deleteSala(id: number): Observable<void> {
     return this.http.delete<void>(`https://localhost:7160/api/Gestore/Sala/${id}`);
   }
+
+  // PROIEZIONI
 
   getProiezioniList(): Observable<Proiezione[]> {
     return this.http.get<Proiezione[]>("https://localhost:7160/api/Gestore/Proiezione");
@@ -57,6 +63,28 @@ export class FilmsService {
 
   updateProiezione(proiezione: Proiezione): Observable<Proiezione> {
     return this.http.put<Proiezione>(`https://localhost:7160/api/Gestore/Proiezione/${proiezione.id}`, proiezione);
+  }
+
+  // PRENOTAZIONI
+
+  getPrenotazioniList(): Observable<Prenotazione[]> {
+    return this.http.get<Prenotazione[]>("https://localhost:7160/api/Cliente");
+  }
+
+  getPrenotazione(id: number): Observable<Prenotazione> {
+    return this.http.get<Prenotazione>(`https://localhost:7160/api/Cliente/${id}`);
+  }
+
+  addPenotazione(prenotazioneData: Partial<Prenotazione>): Observable<Prenotazione> {
+    return this.http.post<Prenotazione>("https://localhost:7160/api/Cliente", prenotazioneData);
+  }
+
+  deletePrenotazione(id: number): Observable<void> {
+    return this.http.delete<void>(`https://localhost:7160/api/Cliente/${id}`);
+  }
+
+  updatePrenotazione(prenotazione: Prenotazione): Observable<Prenotazione> {
+    return this.http.put<Prenotazione>(`https://localhost:7160/api/Cliente/${prenotazione.id}`, prenotazione);
   }
   
  
@@ -84,4 +112,11 @@ export class Proiezione {
   public salaId: number;
   public orario: Date;
   public postiDisponibili: number;
+}
+
+export class Prenotazione {
+  public id: number;
+  public idProiezione: number;
+  public idUtente: number;
+  public postiPrenotati: number;
 }

@@ -10,35 +10,55 @@
 
 <body>
 
-  <form (submit)="saveProiezione()">
-    
-    <div>
-        <label for="film">Film:</label>
-    <select id="film" name="film" [ngModel]="newProiezione.filmId" (ngModelChange)="onChangeFilm($event)" required>
-      <option *ngFor="let f of films" [value]="f.id">{{ f.titolo }}</option>
-    </select>
-    </div>
+  <div>
 
-    <div>
-      <label for="sala">Sala:</label>
-      <select id="sala" name="sala" [ngModel]="newProiezione.salaId" (ngModelChange)="onChangeSala($event)" required>
-        <option *ngFor="let sala of sale" [value]="sala.id">{{ sala.nome }}</option>
-      </select>
-    </div>
-
-    
-    <div>
-      <label for="orario">Orario:</label>
-      <input type="datetime-local" id="orario" name="orario" [(ngModel)]="newProiezione.orario" required>
-    </div>
-    
-    <div>
-      <label for="postiDisponibili">Posti Disponibili:</label>
-      <input type="number" id="postiDisponibili" name="postiDisponibili" [(ngModel)]="newProiezione.postiDisponibili" required>
-    </div>
-    
-    <button type="submit">Salva Proiezione</button>
-  </form>
+    <form (submit)="saveProiezione()">
+      
+      <div>
+        <div>
+          <label for="film">Film:</label>
+        </div>
+        <div>
+          <select id="film" name="film" [ngModel]="newProiezione.filmId" (ngModelChange)="onChangeFilm($event)" required>
+            <option *ngFor="let f of films" [value]="f.id">{{ f.titolo }}</option>
+          </select>
+        </div>
+      </div>
+  
+      <div>
+        <div>
+          <label for="sala">Sala:</label>
+        </div>
+        <div>
+          <select id="sala" name="sala" [ngModel]="newProiezione.salaId" (ngModelChange)="onChangeSala($event)" required>
+            <option *ngFor="let sala of sale" [value]="sala.id">{{ sala.nome }}</option>
+          </select>
+        </div>
+      </div>
+      
+      <div>
+        <div>
+          <label for="orario">Orario:</label>
+        </div>
+        <div>
+          <input type="datetime-local" id="orario" name="orario" [(ngModel)]="newProiezione.orario" required>
+        </div>
+      </div>
+      
+      <div>
+        <div>
+          <label for="postiDisponibili">Posti Disponibili:</label>
+        </div>
+        <div>
+          <input type="number" id="postiDisponibili" name="postiDisponibili" [(ngModel)]="newProiezione.postiDisponibili" required>
+        </div>
+      </div>
+      
+      <div>
+        <button type="submit">Salva Proiezione</button>
+      </div>
+    </form>
+  </div>
 
   
   <router-outlet></router-outlet>

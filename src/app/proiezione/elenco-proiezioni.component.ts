@@ -51,7 +51,7 @@ export class ElencoProiezioniComponent implements OnInit {
   }
 
   updateProiezione(proiezione: Proiezione): void {
-    this.router.navigate(['/modifica-proiezione', proiezione.id]);
+    this.router.navigate(['/agg-proiezione', {id: proiezione.id} ]);
   }
    
  

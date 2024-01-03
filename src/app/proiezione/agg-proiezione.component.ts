@@ -7,7 +7,7 @@ import { switchMap } from 'rxjs/operators';
 @Component({
   selector: 'app-agg-proiezione',
   templateUrl: './agg-proiezione.component.html',
-  styleUrls: ['./elenco-proiezioni.component.css'],
+  styleUrls: ['./agg-proiezione.component.css'],
 })
 export class AggProiezioneComponent implements OnInit {
 
@@ -40,31 +40,47 @@ export class AggProiezioneComponent implements OnInit {
 
   constructor(private filmsService: FilmsService, private router: Router, private route: ActivatedRoute) {}
 
-  ngOnInit(): void {
-    //this.resetNewProiezione();
+  // ngOnInit(): void {
+  //   //this.resetNewProiezione();
     
-    this.filmsService.getFilmList().subscribe((films) => {
-      console.log(films);
-      this.films = films;
-      this.films.forEach((f) => {console.log(f)});
-    });
+  //   this.filmsService.getFilmList().subscribe((films) => {
+  //     console.log(films);
+  //     this.films = films;
+  //     this.films.forEach((f) => {console.log(f)});
+  //   });
   
-    this.filmsService.getSaleList().subscribe((sale) => {
-      console.log(sale);
-      this.sale = sale;
+  //   this.filmsService.getSaleList().subscribe((sale) => {
+  //     console.log(sale);
+  //     this.sale = sale;
+  //   });
+  // }
+  ngOnInit(): void {
+    this.route.params.pipe(
+      switchMap((params) => {
+        const proiezioneId = +params['id'];
+        if (proiezioneId) {
+          this.loadProiezioneDetails(proiezioneId);
+        }
+        // Carica l'elenco dei film ogni volta che il parametro della route cambia
+        return this.filmsService.getFilmList();
+      })
+    ).subscribe((films) => {
+      this.films = films;
+
+      // Carica l'elenco delle sale ogni volta che il parametro della route cambia
+      this.filmsService.getSaleList().subscribe((sale) => {
+        console.log(sale);
+        this.sale = sale;
+      });
     });
   }
 
   loadProiezioneDetails(id: number): void {
-    this.filmsService.getProiezione(id).subscribe({
-      next: (proiezione) => {
-        this.newProiezione = proiezione;
-      },
-      error: (error) => {
-        console.error('Errore durante il recupero della proiezione:', error);
-      }
+    this.filmsService.getProiezione(id).subscribe((proiezione) => {
+      this.newProiezione = proiezione;
     });
   }
+  
 
   isNewProiezione(): boolean {
     return this.newProiezione.id === 0;
@@ -79,22 +95,7 @@ export class AggProiezioneComponent implements OnInit {
     }
   }
 
-  // addProiezione(): void {
-  //   if (this.newProiezione.film && this.newProiezione.sala && this.newProiezione.orario) {
-  //     this.filmsService.addProiezione(this.newProiezione).subscribe({
-  //       next: (addedProiezione) => {
-  //         this.proiezioni.push(addedProiezione);
-  //         this.resetNewProiezione();
-  //         this.router.navigateByUrl('/elenco-proiezioni');
-  //       },
-  //       error: (error) => {
-  //         alert('Errore durante l\'aggiunta della proiezione');
-  //       }
-  //     });
-  //   } else {
-  //     alert('Compila tutti i campi correttamente prima di aggiungere una proiezione.');
-  //   }
-  // }
+  
   addProiezione(): void {
     console.log("Before adding Proiezione:", this.newProiezione);
   
@@ -148,11 +149,5 @@ export class AggProiezioneComponent implements OnInit {
     }
   }
 
-  // resetNewProiezione(): void {
-  //   //this.newProiezione = { id: 0, film: {} as Film, sala: {} as Sala, orario: new Date(), postiDisponibili: 0 };
-  //   this.newProiezione = new Proiezione();
-  //   this.newProiezione.id = 0;
-  //   this.newProiezione.orario = new Date();
-  //   this.newProiezione.postiDisponibili = 0;
-  // }
+  
 }
