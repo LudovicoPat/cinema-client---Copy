@@ -14,8 +14,8 @@ export class ElencoProiezioniComponent implements OnInit {
   
   title = 'cinema-client';
 
-  filmDetails: { [key: number]: Film } = {};
-  salaDetails: { [key: number]: Sala } = {};
+  // filmDetails: { [key: number]: Film } = {};
+  // salaDetails: { [key: number]: Sala } = {};
 
   constructor(private filmsService: FilmsService, private router: Router, private route: ActivatedRoute) {}
 
@@ -27,24 +27,24 @@ export class ElencoProiezioniComponent implements OnInit {
     this.filmsService.getProiezioniList().subscribe((proiezioni) => {
       this.proiezioni = proiezioni;
 
-      proiezioni.forEach((proiezione) => {
-        this.loadFilmDetails(proiezione.filmId);
-        this.loadSalaDetails(proiezione.salaId);
-      });
+      // proiezioni.forEach((proiezione) => {
+      //   this.loadFilmDetails(proiezione.filmId);
+      //   this.loadSalaDetails(proiezione.salaId);
+      // });
     });
   }
 
-  loadFilmDetails(filmId: number): void {
-    this.filmsService.getFilm(filmId).subscribe((film) => {
-      this.filmDetails[filmId] = film;
-    });
-  }
+  // loadFilmDetails(filmId: number): void {
+  //   this.filmsService.getFilm(filmId).subscribe((film) => {
+  //     this.filmDetails[filmId] = film;
+  //   });
+  // }
 
-  loadSalaDetails(salaId: number): void {
-    this.filmsService.getSala(salaId).subscribe((sala) => {
-      this.salaDetails[salaId] = sala;
-    });
-  }
+  // loadSalaDetails(salaId: number): void {
+  //   this.filmsService.getSala(salaId).subscribe((sala) => {
+  //     this.salaDetails[salaId] = sala;
+  //   });
+  // }
 
   toggleAddProiezioneForm() {
     this.router.navigateByUrl('/agg-proiezione');

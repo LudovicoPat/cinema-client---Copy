@@ -17,9 +17,8 @@
     <h3>Proiezione ID: {{ proiezione.id }}</h3>
     <!-- <div>Film: {{ proiezione.film.titolo }}</div>
     <div>Sala: {{ proiezione.sala.nome }}</div> -->
-    <div>Film: {{ filmDetails[proiezione.filmId].titolo }}</div>
-    <div>Sala: {{ salaDetails[proiezione.salaId].nome }}</div>
-    <div>Data e ora: {{ proiezione.orario | date:'dd/MM/yyyy HH:mm' }}</div>
+    <div>Film: {{ proiezione.film.titolo }}</div>
+    <div>Sala: {{ proiezione.sala.nome }}</div>    <div>Data e ora: {{ proiezione.orario | date:'dd/MM/yyyy HH:mm' }}</div>
     <div>Posti Disponibili: {{ proiezione.postiDisponibili }}</div>
 
     <button (click)="updateProiezione(proiezione)">Modifica Proiezione</button>

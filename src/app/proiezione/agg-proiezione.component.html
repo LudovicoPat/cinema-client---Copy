@@ -12,6 +12,13 @@
 
   <div>
 
+    <div *ngIf="isNewProiezione()">
+      <h2>Aggiungi Proiezione</h2>
+    </div>
+    <div *ngIf="!isNewProiezione()">
+      <h2>Modifica Proiezione</h2>
+    </div>
+
     <form (submit)="saveProiezione()">
       
       <div>

@@ -110,6 +110,8 @@ export class Proiezione {
   public id: number;
   public filmId: number;
   public salaId: number;
+  public film: Film;
+  public sala: Sala;
   public orario: Date;
   public postiDisponibili: number;
 }
