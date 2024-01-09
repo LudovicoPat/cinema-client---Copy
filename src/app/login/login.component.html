@@ -1,0 +1,44 @@
+<div class="content">
+    <form (ngSubmit)="submitLogin()" method="post">
+      <table>
+        <tr colspan="2">
+          Accedi al tuo account
+        </tr>
+        <tr>
+          <td>
+            Username:
+          </td>
+          <td>
+            <input type="text" id="user" name="username" placeholder="LightYagami" [(ngModel)]="username" />
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Password:
+          </td>
+          <td>
+            <input type="password" id="passw" name="passw" [(ngModel)]="password" />
+          </td>
+        </tr>
+      </table>
+  
+      <button type="submit" id="accediBottone">LOGIN</button>
+  
+    </form>
+  
+    <div class="link">
+      <p>
+        Nuovo utente?
+        <!-- Utilizza il routerLink per navigare alla pagina di registrazione -->
+        <a [routerLink]="['/registrazione']">Registrati</a>
+      </p>
+    </div>
+  
+    <div class="link">
+      <p>
+        <!-- Aggiusta il link per utilizzare il routerLink -->
+        <a [routerLink]="['/recupero-credenziali']">Dimenticato User o Password?</a>
+      </p>
+    </div>
+  </div>
+  

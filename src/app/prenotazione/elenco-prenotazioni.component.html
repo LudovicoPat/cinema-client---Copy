@@ -1,0 +1,9 @@
+<div *ngFor="let prenotazione of prenotazioni">
+    <h3>Prenotazione ID: {{ prenotazione.id }}</h3>
+    <div>Proiezione: {{ prenotazione.proiezione.id }}</div>
+    <div>Utente: {{ prenotazione.utente.nome }} {{ prenotazione.utente.cognome }}</div>
+    <div>Posti Prenotati: {{ prenotazione.postiPrenotati }}</div>
+  
+    <button (click)="deletePrenotazione(prenotazione.id)">Elimina Prenotazione</button>
+  </div>
+  

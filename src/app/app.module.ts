@@ -7,7 +7,9 @@ import { ElencoFilmComponent } from './elenco-film/elenco-film.component';
 import { CommonModule } from '@angular/common';
 import { ElencoSaleComponent } from './elenco-sale/elenco-sale.component';
 import { ElencoProiezioniComponent } from './proiezione/elenco-proiezioni.component';
-import { AggProiezioneComponent } from './proiezione/agg-proiezione.component'
+import { AggProiezioneComponent } from './proiezione/agg-proiezione.component';
+import { ElencoPrenotazioniComponent } from './prenotazione/elenco-prenotazioni.component';
+import { LoginComponent } from './login/login.component';
 
 
 export const routes: Routes = [
@@ -17,17 +19,21 @@ export const routes: Routes = [
   { path: 'elenco-sale', component: ElencoSaleComponent },
   { path: 'elenco-proiezioni', component: ElencoProiezioniComponent },
   { path: 'agg-proiezione', component: AggProiezioneComponent },
+  { path: 'elenco-prenotazioni', component: ElencoPrenotazioniComponent },
+  { path: 'login', component: LoginComponent },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes), FormsModule, CommonModule],//CommonModule qui risolve il problema di utilizzo di ngForOf
+  imports: [RouterModule.forRoot(routes), FormsModule, CommonModule],
   exports: [RouterModule],
   declarations: [
     ElencoFilmComponent,
     AggFilmComponent,
     ElencoSaleComponent,
     ElencoProiezioniComponent,
-    AggProiezioneComponent
+    AggProiezioneComponent,
+    ElencoPrenotazioniComponent,
+    LoginComponent
   ]
 })
 export class AppRoutingModule {}

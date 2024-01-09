@@ -68,26 +68,44 @@ export class FilmsService {
   // PRENOTAZIONI
 
   getPrenotazioniList(): Observable<Prenotazione[]> {
-    return this.http.get<Prenotazione[]>("https://localhost:7160/api/Cliente");
+    return this.http.get<Prenotazione[]>("https://localhost:7160/api/Cliente/Prenotazione");
   }
 
   getPrenotazione(id: number): Observable<Prenotazione> {
-    return this.http.get<Prenotazione>(`https://localhost:7160/api/Cliente/${id}`);
+    return this.http.get<Prenotazione>(`https://localhost:7160/api/Cliente/Prenotazione/${id}`);
   }
 
   addPenotazione(prenotazioneData: Partial<Prenotazione>): Observable<Prenotazione> {
-    return this.http.post<Prenotazione>("https://localhost:7160/api/Cliente", prenotazioneData);
+    return this.http.post<Prenotazione>("https://localhost:7160/api/Cliente/Prenotazione", prenotazioneData);
   }
 
   deletePrenotazione(id: number): Observable<void> {
-    return this.http.delete<void>(`https://localhost:7160/api/Cliente/${id}`);
+    return this.http.delete<void>(`https://localhost:7160/api/Cliente/Prenotazione/${id}`);
   }
 
   updatePrenotazione(prenotazione: Prenotazione): Observable<Prenotazione> {
-    return this.http.put<Prenotazione>(`https://localhost:7160/api/Cliente/${prenotazione.id}`, prenotazione);
+    return this.http.put<Prenotazione>(`https://localhost:7160/api/Cliente/Prenotazione/${prenotazione.id}`, prenotazione);
+  }
+
+  // LOGIN
+
+  login(email: string, password: string): Observable<Utente> {
+    const loginData = { email, password };
+    return this.http.post<Utente>("https://localhost:7160/api/Login", loginData);
   }
   
+
+  
  
+}
+
+export class Utente
+{
+  public id: number;
+  public nome: string;
+  public cognome: string;
+  public email: string;
+  public password: string;
 }
 
 export class Film
@@ -118,7 +136,9 @@ export class Proiezione {
 
 export class Prenotazione {
   public id: number;
-  public idProiezione: number;
-  public idUtente: number;
+  public proiezioneId: number;
+  public utenteId: number;
+  public proiezione: Proiezione;
+  public utente: Utente;
   public postiPrenotati: number;
 }

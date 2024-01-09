@@ -39,6 +39,15 @@ export class AppComponent implements OnInit {
     this.router.navigateByUrl('/elenco-proiezioni');
   }
 
+  togglePrenotazioniList(){
+    this.router.navigateByUrl('/elenco-prenotazioni');
+  }
+
+  toggleAccesso(){
+    this.router.navigateByUrl('/login');
+  };
+
+
   ngOnInit(): void {
     this.loadFilms();
   }
